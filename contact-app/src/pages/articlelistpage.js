@@ -5,8 +5,9 @@ import Articlelist from '../component/articlelist'
 
 const Articlelistpage =()=> (
     <>
-   <Articlelist article={articleContent}/>
+    <h1>Articles</h1>
+   <Articlelist articles={articleContent}/>
     </>
-)
+);
 
 export default Articlelistpage;

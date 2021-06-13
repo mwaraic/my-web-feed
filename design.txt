@@ -1,0 +1,17 @@
+app name: mywebfeed
+
+description: Preference drived web feed service
+
+famous people (celebs, government, youtubers etc.) twitter tweets
+
+reddit post by topic (science, politics etc.)
+
+google news (current, topic centric etc.)
+
+
+firbase login setup
+
+
+
+
+
