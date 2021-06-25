@@ -57,14 +57,20 @@ app.get('/api/news/:name', async (req, res) => {
 
     }); 
   */
+   const tags=['israelpalestine', 'kardashians', 'residentialschool'];
+   var collection=[]
+   for(var i=0; i<tags.length;i++){
     
-    googleNewsAPI.getNews(googleNewsAPI.SEARCH,req.params.name, "en-GB", (err, response) => {
-       
-       res.status(200).json(response)
-    });
-    
- 
-    
+    let news= await googleNewsAPI.getNews(googleNewsAPI.SEARCH,tags[i], "en-GB");
+    collection.push(news.items)
+}   
+var final=[]
+for(var i=0; i<tags.length;i++){
+   
+   final= final.concat(collection[i])
+
+}  
+    res.status(200).json(final)
 })
 app.get('/api/tweets/:id', async (req, res) => {
     
