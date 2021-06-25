@@ -13,7 +13,7 @@ function Articlepage({match}){
     useEffect(()=>{
         const fetchData= async()=>{
             const result = await fetch(`/api/articles/${name}`)
-            const body= await result.json();  
+            const body= await result.json(); 
             setArticleInfo(body);      
         }
         fetchData();

@@ -12,7 +12,16 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "mongodb": "^3.6.9"
+    "google-news-json": "^2.0.4",
+    "google-news-scraper": "^1.0.6",
+    "got": "^11.8.2",
+    "mongodb": "^3.6.9",
+    "my-google-news": "^3.0.0",
+    "needle": "^2.6.0",
+    "newsapi": "^2.4.1",
+    "oauth-1.0a": "^2.2.6",
+    "react-twitter-embed": "^3.0.3",
+    "twitter-api-v2": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.5",
