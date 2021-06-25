@@ -88,7 +88,7 @@ const getUserTweets = async () => {
 
     // we request the author_id expansion so that we can print out the user name later
     let params = {
-        "max_results": 5,
+        "max_results": 20,
         "tweet.fields": "created_at",
         "expansions": "author_id"
     }
