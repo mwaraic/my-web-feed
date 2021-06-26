@@ -18,9 +18,10 @@ const Tweet=({match})=>{
     },[userid]);
     return(
     <>
+    
     <Container>
     {promiseInProgress && 
-    <ReactLoading type={'spinningBubbles'} color={'black'} height={'25%'} width={'25%'} />}
+    <ReactLoading type={'spinningBubbles'} color={'black'} height={'20%'} width={'20%'} />}
    {twitter.map( d=> <div className="centerContent">
     <div className="selfCenter">
     <TwitterTweetEmbed tweetId={d.id} placeholder={<div />}/>

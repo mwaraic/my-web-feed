@@ -21,6 +21,8 @@
     "newsapi": "^2.4.1",
     "oauth-1.0a": "^2.2.6",
     "react-twitter-embed": "^3.0.3",
+    "scrap-reddit": "^1.0.0",
+    "snoowrap": "^1.23.0",
     "twitter-api-v2": "^1.1.0"
   },
   "devDependencies": {

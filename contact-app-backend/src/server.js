@@ -2,14 +2,12 @@ import express, { json } from 'express';
 import {MongoClient} from 'mongodb';
 
 const app= express();
-// Get User Tweet timeline by user ID
-// https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/quick-start
 const needle = require('needle');
-const NewsAPI = require('newsapi');
-const googleNewsScraper = require('google-news-scraper')
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 let googleNewsAPI = require("google-news-json");
+const reddit = require('scrap-reddit')
+
 const withDB = async (operations, res) => {
     try {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
@@ -23,41 +21,7 @@ const withDB = async (operations, res) => {
     }
 }
 app.get('/api/news/:name', async (req, res) => {
-    
-  /*  const newsapi = new NewsAPI('7b129d78037245f798f22542ae74e2e2');
-     
-    // To query top headlines
-    // All options passed to topHeadlines are optional, but you need to include at least one of them
-  newsapi.v2.topHeadlines({
-      q: req.params.name,
-    }).then(response => {
-      
-    });
-     newsapi.v2.sources({
-        language: 'en',
-    }).then(response => {
-      console.log(response)
-      const source=[]
-      const domain=[]
-      response.sources.map(d=> source.push(d.id))
-      response.sources.map(d=>domain.push(d.url))
- newsapi.v2.everything({
-      
-      q: req.params.name,
-      sources: source.toLocaleString(),
-      domains: domain.toLocaleString(),
-      from: '2021-06-24',
-      to: '2021-06-24',
-      language: 'en',
-    }).then(response => {
-      console.log(response.articles.length)
-      res.status(200).json(response)
-
-    });
-
-    }); 
-  */
-   const tags=['israelpalestine', 'kardashians', 'residentialschool'];
+   const tags=['israelpalestine', 'kardashians', 'residentialschool', 'ontario'];
    var collection=[]
    for(var i=0; i<tags.length;i++){
     
@@ -72,6 +36,24 @@ for(var i=0; i<tags.length;i++){
 }  
     res.status(200).json(final)
 })
+
+app.get('/api/reddit/:name', async (req, res) => {
+    const tags=['science', 'AskWomen', 'AskReddit'];
+
+    var collection=[]
+   for(var i=0; i<tags.length;i++){
+    const post = await reddit.topPost(tags[i])
+    collection.push(post.data)
+   }
+   var final=[]
+for(var i=0; i<tags.length;i++){
+   
+   final= final.concat(collection[i])
+
+}  
+    res.status(200).json(final)
+})
+
 app.get('/api/tweets/:id', async (req, res) => {
     
         const userId = req.params.id;
@@ -148,6 +130,7 @@ const getPage = async (params, options, nextToken) => {
 }
 getUserTweets();
 })
+
 app.get('/api/articles/:name', async (req, res) => {
     withDB(async (db) => {
         const articleName = req.params.name;

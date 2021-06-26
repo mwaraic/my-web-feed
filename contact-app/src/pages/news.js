@@ -24,7 +24,7 @@ const News=({match})=>{
    
     <Container> 
     {promiseInProgress && 
-    <ReactLoading type={'spinningBubbles'} color={'black'} height={'25%'} width={'25%'} />}
+    <ReactLoading type={'spinningBubbles'} color={'black'} height={'20%'} width={'20%'} />}
     <Gnews props={news}/>
     
     </Container>
