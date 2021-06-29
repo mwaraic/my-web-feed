@@ -2,11 +2,16 @@ import React from "react"
 import { Route, Redirect } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 import { Container } from "react-bootstrap"
-export default function PrivateRoute({ component: Component, ...rest }) {
+import NavBar from "../NavBar"
+
+
+export default function NavPrivateRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth()
 
   return (
-
+      <>
+    <NavBar user={currentUser}/>
+    
     <Container
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
@@ -19,5 +24,6 @@ export default function PrivateRoute({ component: Component, ...rest }) {
       }}
     ></Route></div>
     </Container>
+    </>
   )
 }

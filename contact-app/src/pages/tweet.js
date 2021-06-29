@@ -1,36 +1,33 @@
 import React, {useState, useEffect} from 'react';
-import { TwitterTweetEmbed } from 'react-twitter-embed';
-import { Container } from 'react-bootstrap';
+import Tweet2 from '../component/tweet2';
 import { usePromiseTracker,trackPromise} from 'react-promise-tracker';
 import ReactLoading from 'react-loading';
-const Tweet=({match})=>{
+import { useAuth } from '../contexts/AuthContext';
+// Tweet (without options)
+
+const Tweets=()=>{
     const { promiseInProgress } = usePromiseTracker();
-    const userid= match.params.id;
-    const [twitter, setTwitter]= useState([{}]) 
+    const { currentUser} = useAuth()
+    const [twitter, setTwitter]= useState([]) 
     useEffect(()=>{
         const fetchData= async()=>{
-            const result = await fetch(`/api/tweets/${userid}`)  
+            const result = await fetch(`/api/tweets/${currentUser.email}`)  
             const body= await result.json(); 
             setTwitter(body);  
         }
         trackPromise(
             fetchData());
-    },[userid]);
-    return(
-    <>
+    },[currentUser]);
+    console.log(twitter)
     
-    <Container>
-    <div style={{marginLeft:"50%"}}>
+       return(
+    <>
+   <div style={{marginLeft:"50%"}}>
     {promiseInProgress && 
     <ReactLoading type={'spinningBubbles'} color={'black'} height={'50%'} width={'50%'} />}</div>
-   {twitter.map( d=> <div className="centerContent">
-    <div className="selfCenter">
-    <TwitterTweetEmbed tweetId={d.id} placeholder={<div />}/>
-    </div>
-  </div>)}
-   
-    </Container>
+    <Tweet2 props={twitter}/>
+    
     </>)
 }
 
-export default Tweet;
+export default Tweets;

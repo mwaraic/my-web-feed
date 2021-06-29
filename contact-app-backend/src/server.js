@@ -21,7 +21,10 @@ const withDB = async (operations, res) => {
     }
 }
 app.get('/api/news/:name', async (req, res) => {
-   const tags=['israelpalestine', 'kardashians', 'residentialschool', 'ontario'];
+    withDB(async (db) => {
+        const currentUser = req.params.name;
+        const preferances = await db.collection('preferances').findOne({ name: currentUser })
+        const tags=preferances.news;
    var collection=[]
    for(var i=0; i<tags.length;i++){
     
@@ -35,11 +38,15 @@ for(var i=0; i<tags.length;i++){
 
 }  
     res.status(200).json(final)
+    }, res);
+   
 })
 
 app.get('/api/reddit/:name', async (req, res) => {
-    const tags=['science', 'AskWomen', 'AskReddit'];
-
+    withDB(async (db) => {
+        const currentUser = req.params.name;
+        const preferances = await db.collection('preferances').findOne({ name: currentUser })
+        const tags=preferances.reddit;
     var collection=[]
    for(var i=0; i<tags.length;i++){
     const post = await reddit.topPost(tags[i])
@@ -51,12 +58,22 @@ for(var i=0; i<tags.length;i++){
    final= final.concat(collection[i])
 
 }  
+    console.log(req.params.name)
     res.status(200).json(final)
+}, res);
+   
 })
 
-app.get('/api/tweets/:id', async (req, res) => {
-    
-        const userId = req.params.id;
+app.get('/api/tweets/:name', async (req, res) => {
+    withDB(async (db) => {
+        const currentUser = req.params.name;
+        const preferances = await db.collection('preferances').findOne({ name: currentUser })
+        const tags=preferances.twitter;
+    var collection=[]
+
+    for(var i=0;i<tags.length;i++){
+
+        const userId = tags[i];
         const url = `https://api.twitter.com/2/users/${userId}/tweets`;
 
 // The code below sets the bearer token from your environment variables
@@ -65,12 +82,11 @@ app.get('/api/tweets/:id', async (req, res) => {
 const bearerToken = 'AAAAAAAAAAAAAAAAAAAAAJK%2BQwEAAAAA0pQRjfJzqxD1z9mDnkOC3%2F4zem0%3DgI8JK8k2lHsgaoQwRkVkdpBQA11x3P1dXB3v0FGPvMaOwjDOtk';
 
 const getUserTweets = async () => {
-
     let userTweets = [];
 
     // we request the author_id expansion so that we can print out the user name later
     let params = {
-        "max_results": 20,
+        "max_results": 10,
         "tweet.fields": "created_at",
         "expansions": "author_id"
     }
@@ -101,13 +117,14 @@ const getUserTweets = async () => {
             hasNextPage = false;
         }
     }
-
-    console.dir(userTweets, {
+  console.dir(userTweets, {
         depth: null
     }
     );
-    console.log(`Got ${userTweets.length} Tweets from ${userName} (user ID ${userId})!`); 
-    res.status(200).json(userTweets)
+    collection =collection.concat(userTweets)
+    if(collection.length===tags.length*10){
+        res.status(200).json(collection)
+    }
 }
 
 const getPage = async (params, options, nextToken) => {
@@ -128,7 +145,11 @@ const getPage = async (params, options, nextToken) => {
     }
    
 }
-getUserTweets();
+getUserTweets();}
+
+        
+}, res);
+   
 })
 
 app.get('/api/articles/:name', async (req, res) => {
