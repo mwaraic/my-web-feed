@@ -1,4 +1,4 @@
-import { TwitterTweetEmbed } from 'react-twitter-embed';
+import React from 'react';
 import { Card, Container } from 'react-bootstrap';
 
 import moment from 'moment';

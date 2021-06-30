@@ -12,7 +12,9 @@ import Tweets from "./pages/tweet"
 import News from "./pages/news"
 import Reddit from "./pages/reddit"
 import NavPrivateRoute from "./component/NavPrivateRoute"
+import NavPrivateRoute2 from "./component/NavPrivateRoute2"
 import DivRoute from "./component/DivRoute"
+import MyComponent from "./pages/setpreferance"
 function App() {
   return (
     <>
@@ -30,7 +32,7 @@ function App() {
               <NavPrivateRoute path="/tweets/" component={Tweets} exact/>
               <NavPrivateRoute path="/news/" component={News} exact/>
               <NavPrivateRoute path="/reddit/" component={Reddit} exact/>
-   
+              <NavPrivateRoute2 path="/set-preferances/" component={MyComponent}/>
            </Switch>
         </AuthProvider>
         
