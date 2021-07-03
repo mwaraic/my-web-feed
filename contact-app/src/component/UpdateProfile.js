@@ -73,15 +73,18 @@ export default function UpdateProfile() {
                 placeholder="Leave blank to keep the same"
               />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
-              Update
-            </Button>
+            <div className="text-center" style={{marginTop:50}}>
+      <Button disabled={loading} variant="success" className="w-50" type="submit">
+                Update
+                </Button>
+               
+      </div><div className="text-center" style={{marginTop:10, marginBottom: 50}}><Link to='/'><Button className="w-50"variant="success" >
+                  Cancel
+                </Button></Link></div> 
           </Form>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
-        <Link to="/">Cancel</Link>
-      </div>
+      
     </>
   )
 }

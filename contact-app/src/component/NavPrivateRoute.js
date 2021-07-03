@@ -7,10 +7,11 @@ import NavBar from "../NavBar"
 
 export default function NavPrivateRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth()
-
+  
+  
   return (
       <>
-    <NavBar user={currentUser}/>
+    <NavBar/>
     
     <Container
       className="d-flex align-items-center justify-content-center"

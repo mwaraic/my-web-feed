@@ -1,6 +1,7 @@
 import express, { json } from 'express';
 import {MongoClient} from 'mongodb';
 
+
 const app= express();
 const needle = require('needle');
 app.use(express.urlencoded({extended: true}));
@@ -28,7 +29,7 @@ app.get('/api/news/:name', async (req, res) => {
    var collection=[]
    for(var i=0; i<tags.length;i++){
     
-    let news= await googleNewsAPI.getNews(googleNewsAPI.SEARCH,tags[i], "en-GB");
+    let news= await googleNewsAPI.getNews(googleNewsAPI.SEARCH,tags[i].value, "en-GB");
     collection.push(news.items)
 }   
 var final=[]
@@ -49,7 +50,7 @@ app.get('/api/reddit/:name', async (req, res) => {
         const tags=preferances.reddit;
     var collection=[]
    for(var i=0; i<tags.length;i++){
-    const post = await reddit.topPost(tags[i])
+    const post = await reddit.topPost(tags[i].value)
     collection.push(post.data)
    }
    var final=[]
@@ -73,7 +74,7 @@ app.get('/api/tweets/:name', async (req, res) => {
 
     for(var i=0;i<tags.length;i++){
 
-        const userId = tags[i];
+        const userId = tags[i].value;
         const url = `https://api.twitter.com/2/users/${userId}/tweets`;
 
 // The code below sets the bearer token from your environment variables
@@ -152,12 +153,12 @@ getUserTweets();}
    
 })
 
-app.get('/api/articles/:name', async (req, res) => {
+app.get('/api/preferances/:name', async (req, res) => {
     withDB(async (db) => {
-        const articleName = req.params.name;
-
-        const articleInfo = await db.collection('articles').findOne({ name: articleName })
-        res.status(200).json(articleInfo);
+        const NewUser = req.params.name;
+        const preferances = await db.collection('preferances').findOne({ name: NewUser})
+        console.log(preferances)
+        res.status(200).json(preferances);
     }, res);
 })
 
@@ -194,5 +195,36 @@ app.post('/api/articles/:name/add-comment', (req, res) => {
     }, res);
 });
 
+app.post('/api/update-preferances/:name', (req, res) => {
+    const { twitter, reddit, news} = req.body;
+    const NewUser = req.params.name;
+
+    withDB(async (db) => {
+        
+        await db.collection('preferances').updateOne({ name: NewUser }, {
+            '$set': {
+                twitter:twitter, news: news, reddit: reddit
+            },
+        });
+      res.status(200).json('maaz')
+    }, res);
+    
+});
+
+
+
+app.post('/api/set-preferances/:name', (req, res) => {
+    const { twitter, reddit, news} = req.body;
+    const NewUser = req.params.name;
+
+    withDB(async (db) => {
+        
+        await db.collection('preferances').insertOne(
+            {name: NewUser, twitter: twitter, reddit: reddit, news:news }
+        )
+      res.status(200).json('maaz')
+    }, res);
+    
+});
 app.get('/hello', (req,res)=> res.send('Hello!'));
 app.listen(8000, () =>console.log('Listening on port 8000'));

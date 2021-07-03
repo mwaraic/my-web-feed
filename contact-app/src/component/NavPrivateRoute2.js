@@ -4,10 +4,9 @@ import { useAuth } from "../contexts/AuthContext"
 import { Container } from "react-bootstrap"
 import NavBar2 from "../NavBar2"
 
-
 export default function NavPrivateRoute2({ component: Component, ...rest }) {
   const { currentUser } = useAuth()
-
+  
   return (
       <>
     <NavBar2/>
