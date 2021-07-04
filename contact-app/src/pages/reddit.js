@@ -4,18 +4,18 @@ import { usePromiseTracker,trackPromise} from 'react-promise-tracker';
 import ReactLoading from 'react-loading'; 
 import { useAuth } from '../contexts/AuthContext';
 /*import { useAuth } from "../contexts/AuthContext" */
-
+import NotFoundPage from './NotFoundPage';
 const Reddit=()=>{
     /*const { currentUser } = useAuth()*/
     const { promiseInProgress } = usePromiseTracker();
-    const [twitter, setTwitter]= useState([]) 
+    const [reddit, setReddit]= useState([]) 
     const { currentUser} = useAuth()
 
     useEffect(()=>{
         const fetchData= async()=>{
             const result = await fetch(`/api/reddit/${currentUser.email}`)  
             const body= await result.json(); 
-            setTwitter(body);  
+            setReddit(body);  
         }
         trackPromise(
             fetchData());
@@ -28,6 +28,7 @@ const Reddit=()=>{
         // or alternatively
         // return text.replace(urlRegex, '<a href="$1">$1</a>')
       }
+     try{ 
     return(
     <>
     
@@ -35,7 +36,7 @@ const Reddit=()=>{
         <div style={{marginLeft:"50%"}}>
     {promiseInProgress && 
     <ReactLoading type={'spinningBubbles'} color={'black'} height={'50%'} width={'50%'} />}</div>
-    {twitter.map(d=>   
+    {reddit.map(d=>   
     <Card style={{ minWidth: '20rem', margin: 10 }}>
         
         <Card.Body><Card.Title>{d.subreddit_name_prefixed}</Card.Title>
@@ -47,7 +48,8 @@ const Reddit=()=>{
     </Card>)}
    
     </Container>
-    </>)
+    </>)}
+    catch{return(<h2>null</h2>)}
 }
 
 export default Reddit;

@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
 export default function Signup() {
+  
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
@@ -14,7 +15,8 @@ export default function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-
+    var store = require('store')
+    store.set(emailRef.current.value, { restricted: true })
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match")
     }

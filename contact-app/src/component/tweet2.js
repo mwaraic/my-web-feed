@@ -12,6 +12,7 @@ function urlify(text) {
     // return text.replace(urlRegex, '<a href="$1">$1</a>')
   }
 const Tweet2=({props})=>{
+  try{
 return(
    <Container>  
    {props.sort(function(a, b) {
@@ -29,7 +30,9 @@ return(
         )
         }
    
-    </Container>)
+    </Container>)} catch{
+      return(<h2>null</h2>)
+    }
 }
 
 export default Tweet2;

@@ -17,7 +17,10 @@ export default function Login() {
     try {
       setError("")
       setLoading(true)
+      var store = require('store')
+      store.set(emailRef.current.value, { restricted: false })
       await login(emailRef.current.value, passwordRef.current.value)
+      
       history.push("/news/")
     } catch {
       setError("Failed to log in")
@@ -28,29 +31,32 @@ export default function Login() {
 
   return (
     <>
-      <Card>
+      <Card bg="success">
+
         <Card.Body>
-          <h2 className="text-center mb-4">Log In</h2>
+        <div style={{margin: 30}}>
+        <h2 className="text-center mb-4" style={{color: "white"}} ><img  style={{ height : 55, width: 60, marginLeft: 5, marginRight: 5}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Globe_icon-white.svg/1024px-Globe_icon-white.svg.png" alt=""/>My Web Feed</h2>
+         </div>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
+              <Form.Label style={{color:"white"}}>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
             <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label style={{color:"white"}}>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
             <div className="text-center" style={{marginTop:25}}>
-            <Button variant="success" disabled={loading} className="w-100" type="submit">
+            <Button variant="dark" disabled={loading} className="w-100" type="submit">
               Log In
             </Button></div>
           </Form>
-          <div className="w-100 text-center mt-3">
+          
+        </Card.Body>
+      </Card><div className="w-100 text-center mt-3">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
-        </Card.Body>
-      </Card>
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>

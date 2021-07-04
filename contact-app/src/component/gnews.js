@@ -1,8 +1,8 @@
 import React from "react";
 import moment  from "moment";
 import { Card} from 'react-bootstrap';
-const Gnews =({props})=>(
-    
+const Gnews =({props})=>{
+    try{return(
     props.sort(function(a, b) {
         var c = new Date(a.pubDate);
         var d = new Date(b.pubDate);
@@ -14,9 +14,10 @@ const Gnews =({props})=>(
           <Card.Text><p>{d.subtitle}</p><h6>{moment(d.pubDate).fromNow()}</h6></Card.Text>
         </Card.Body>
       </Card>)
+    )}catch{
+      return(<h2>null</h2>)
+    }
+        }
       
-)
-      
-
 
 export default Gnews;

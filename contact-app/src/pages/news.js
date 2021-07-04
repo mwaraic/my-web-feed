@@ -4,12 +4,12 @@ import { usePromiseTracker,trackPromise} from 'react-promise-tracker';
 import ReactLoading from 'react-loading';
 import Gnews from '../component/gnews';
 import { useAuth } from "../contexts/AuthContext"
-
 const News=()=>{
     const { promiseInProgress } = usePromiseTracker();
     const { currentUser} = useAuth()
     const [news, setNews]= useState([]) 
-    useEffect(()=>{
+   useEffect(()=>{
+        
         const fetchData= async()=>{
             const result = await fetch(`/api/news/${currentUser.email}`)  
             const body= await result.json(); 
@@ -17,10 +17,12 @@ const News=()=>{
         }
         trackPromise(
         fetchData());
+        
+        
     },[currentUser]);
     
     console.log(news)
-    return(
+  return(
     <>
    
     <Container> 

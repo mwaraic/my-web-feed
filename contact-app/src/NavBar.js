@@ -26,12 +26,12 @@ export default function NavBar() {
 <>
    
    <Navbar bg="success" expand="lg" >
-   <Navbar.Brand style={{color: "white"}} ><img  style={{ height : 40, width: 42, marginLeft: 5 }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Globe_icon-white.svg/1024px-Globe_icon-white.svg.png" alt=""/></Navbar.Brand>
+   <Navbar.Brand style={{color: "white", fontSize: 15}} ><img  style={{ height : 40, width: 42, marginLeft: 5, marginRight: 5 }} src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Globe_icon-white.svg/1024px-Globe_icon-white.svg.png" alt=""/>My Web Feed</Navbar.Brand>
    <Navbar.Toggle aria-controls="basic-navbar-nav" />
    <Navbar.Collapse className="justify-content-end">
    <Nav className="mr-auto">
-   <Nav.Link style={{color: "white", fontSize: 15}} href="/"><BsFillPersonFill/> Profile</Nav.Link>
-   <Nav.Link style={{color: "white", fontSize: 15}} onClick={handleLogout}> <BsBoxArrowInLeft /> Log Out</Nav.Link>
+   <Nav.Link style={{color: "white", fontSize: 15, marginLeft:5}} href="/"><BsFillPersonFill/> Profile</Nav.Link>
+   <Nav.Link style={{color: "white", fontSize: 15, marginLeft:5}} onClick={handleLogout}> <BsBoxArrowInLeft /> Log Out</Nav.Link>
       
     </Nav>
   </Navbar.Collapse>
