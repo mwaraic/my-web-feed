@@ -6,7 +6,8 @@ import { useAuth } from "../contexts/AuthContext"
 import {Link, useHistory } from "react-router-dom"
 import Creatable from 'react-select/creatable';
 import Select from 'react-select';
-
+import { Helmet } from 'react-helmet';
+const TITLE= "Update Preferences | My Web Feed"
 const UpdatePreferances=()=> {
     const { currentUser} = useAuth()
     const [twitter, setTwitter] = useState([])
@@ -50,6 +51,7 @@ const UpdatePreferances=()=> {
     const handleChange3 = (reddit) => setReddit(reddit);
      return (
         <>
+        <Helmet><title>{TITLE}</title></Helmet>
         <div style={{margin:20}}>{error && <Alert className="text-center" variant="danger">{error}</Alert>}</div>
         
         <Form onSubmit={onSubmit}>

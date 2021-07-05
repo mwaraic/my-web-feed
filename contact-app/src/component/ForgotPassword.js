@@ -2,7 +2,8 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom"
-
+import { Helmet } from 'react-helmet';
+const TITLE= "Reset Password | My Web Feed"
 export default function ForgotPassword() {
   const emailRef = useRef()
   const { resetPassword } = useAuth()
@@ -28,6 +29,7 @@ export default function ForgotPassword() {
 
   return (
     <>
+    <Helmet><title>{TITLE}</title></Helmet>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Password Reset</h2>
