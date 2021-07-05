@@ -9,7 +9,7 @@ export default function NavPrivateRoute2({ component: Component, ...rest }) {
   const { currentUser } = useAuth()
   var store = require('store')
   
-  if(store.get(currentUser.email).user ==false){
+  if(store.get(currentUser.email).user===false){
     return <Redirect to="/news" />}
   return (
       <>

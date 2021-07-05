@@ -1,13 +1,13 @@
-import express, { json } from 'express';
+import express from 'express';
 import {MongoClient} from 'mongodb';
-
-
 const app= express();
 const needle = require('needle');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 let googleNewsAPI = require("google-news-json");
 const reddit = require('scrap-reddit')
+const dotenv = require('dotenv');
+dotenv.config();
 
 const withDB = async (operations, res) => {
     try {
@@ -59,7 +59,6 @@ for(var i=0; i<tags.length;i++){
    final= final.concat(collection[i])
 
 }  
-    console.log(req.params.name)
     res.status(200).json(final)
 }, res);
    
@@ -80,7 +79,7 @@ app.get('/api/tweets/:name', async (req, res) => {
 // The code below sets the bearer token from your environment variables
 // To set environment variables on macOS or Linux, run the export command below from the terminal:
 // export BEARER_TOKEN='YOUR-TOKEN'
-const bearerToken = 'AAAAAAAAAAAAAAAAAAAAAJK%2BQwEAAAAA0pQRjfJzqxD1z9mDnkOC3%2F4zem0%3DgI8JK8k2lHsgaoQwRkVkdpBQA11x3P1dXB3v0FGPvMaOwjDOtk';
+const bearerToken = process.env.BEARER_TOKEN;
 
 const getUserTweets = async () => {
     let userTweets = [];
@@ -118,10 +117,7 @@ const getUserTweets = async () => {
             hasNextPage = false;
         }
     }
-  console.dir(userTweets, {
-        depth: null
-    }
-    );
+ 
     collection =collection.concat(userTweets)
     if(collection.length===tags.length*10){
         res.status(200).json(collection)
@@ -157,43 +153,9 @@ app.get('/api/preferances/:name', async (req, res) => {
     withDB(async (db) => {
         const NewUser = req.params.name;
         const preferances = await db.collection('preferances').findOne({ name: NewUser})
-        console.log(preferances)
         res.status(200).json(preferances);
     }, res);
 })
-
-app.post('/api/articles/:name/upvote', async (req, res) => {
-    withDB(async (db) => {
-        const articleName = req.params.name;
-    
-        const articleInfo = await db.collection('articles').findOne({ name: articleName });
-        await db.collection('articles').updateOne({ name: articleName }, {
-            '$set': {
-                upvotes: articleInfo.upvotes + 1,
-            },
-        });
-        const updatedArticleInfo = await db.collection('articles').findOne({ name: articleName });
-    
-        res.status(200).json(updatedArticleInfo);
-    }, res);
-});
-
-app.post('/api/articles/:name/add-comment', (req, res) => {
-    const { username, text } = req.body;
-    const articleName = req.params.name;
-
-    withDB(async (db) => {
-        const articleInfo = await db.collection('articles').findOne({ name: articleName });
-        await db.collection('articles').updateOne({ name: articleName }, {
-            '$set': {
-                comments: articleInfo.comments.concat({ username, text }),
-            },
-        });
-        const updatedArticleInfo = await db.collection('articles').findOne({ name: articleName });
-
-        res.status(200).json(updatedArticleInfo);
-    }, res);
-});
 
 app.post('/api/update-preferances/:name', (req, res) => {
     const { twitter, reddit, news} = req.body;
@@ -210,8 +172,6 @@ app.post('/api/update-preferances/:name', (req, res) => {
     }, res);
     
 });
-
-
 
 app.post('/api/set-preferances/:name', (req, res) => {
     const { twitter, reddit, news} = req.body;

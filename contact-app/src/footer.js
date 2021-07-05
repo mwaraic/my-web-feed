@@ -1,6 +1,6 @@
 import React from "react"
 import { Component } from "react";
-import { Container, Navbar, Nav } from "react-bootstrap";
+import {Navbar} from "react-bootstrap";
 
 class AppFooter extends Component{
     render() {

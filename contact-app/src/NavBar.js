@@ -1,12 +1,11 @@
 import React, { useState } from "react"
-import {Col,Row,Navbar, NavDropdown, Nav} from 'react-bootstrap';
-import { Card, Button, Alert } from "react-bootstrap"
+import {Col,Row,Navbar,Nav} from 'react-bootstrap';
+import { Alert } from "react-bootstrap"
 import { useAuth } from "./contexts/AuthContext";
 import { useHistory } from "react-router-dom"
-import { auth } from "./firebase"
 import { BsFillPersonFill,BsBoxArrowInLeft} from 'react-icons/bs';
 export default function NavBar() {
-  const { currentUser, logout } = useAuth()
+  const {logout } = useAuth()
   const history = useHistory()
   const [error, setError] = useState("")
 

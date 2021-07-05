@@ -10,7 +10,7 @@ export default function NavPrivateRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth()
   var store = require('store')
   if(currentUser != null ){
-  if(store.get(currentUser.email).user ==true){
+  if(store.get(currentUser.email).user ===true){
     return <Redirect to="/set-preferances/" />}
   }
   return (

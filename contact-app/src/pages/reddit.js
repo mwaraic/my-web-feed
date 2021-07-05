@@ -3,10 +3,7 @@ import { Card,Container } from 'react-bootstrap';
 import { usePromiseTracker,trackPromise} from 'react-promise-tracker';
 import ReactLoading from 'react-loading'; 
 import { useAuth } from '../contexts/AuthContext';
-/*import { useAuth } from "../contexts/AuthContext" */
-import NotFoundPage from './NotFoundPage';
 const Reddit=()=>{
-    /*const { currentUser } = useAuth()*/
     const { promiseInProgress } = usePromiseTracker();
     const [reddit, setReddit]= useState([]) 
     const { currentUser} = useAuth()

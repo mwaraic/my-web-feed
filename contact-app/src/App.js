@@ -1,11 +1,9 @@
 import React from "react"
 import Signup from "./component/Signup"
-
 import { AuthProvider } from "./contexts/AuthContext"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Switch} from "react-router-dom"
 import Dashboard from "./component/Dashboard"
 import Login from "./component/Login"
-import PrivateRoute from "./component/PrivateRoute"
 import ForgotPassword from "./component/ForgotPassword"
 import UpdateProfile from "./component/UpdateProfile"
 import Tweets from "./pages/tweet"
