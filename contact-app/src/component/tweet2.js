@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Container } from 'react-bootstrap';
-
+import Opt from './Options';
 import moment from 'moment';
 
 function urlify(text) {
@@ -12,7 +12,7 @@ function urlify(text) {
     // return text.replace(urlRegex, '<a href="$1">$1</a>')
   }
 const Tweet2=({props})=>{
-  try{
+  
 return(
    <Container>  
    {props.sort(function(a, b) {
@@ -20,9 +20,9 @@ return(
         var d = new Date(b.created_at);
         return d-c;}).map( d=>
         <>
-        <Card style={{ minWidth: '20rem', margin: 10 }}>
+        <Card bg="light" style={{ minWidth: '20rem', margin: 10 }}>
         <Card.Body>
-            <Card.Title>{d.author_id}</Card.Title>
+            <Card.Title>{Opt.Twitter.find(({value})=> value===parseInt(d.author_id)).label}</Card.Title>
             <Card.Text><p><div dangerouslySetInnerHTML={{ __html: urlify(d.text)}} /></p><h6>{moment(d.created_at).fromNow()}</h6></Card.Text> 
         </Card.Body>
         </Card>
@@ -30,9 +30,7 @@ return(
         )
         }
    
-    </Container>)} catch{
-      return(<h2>null</h2>)
-    }
+    </Container>)
 }
 
 export default Tweet2;

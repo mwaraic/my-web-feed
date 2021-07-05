@@ -16,7 +16,7 @@ export default function Signup() {
   async function handleSubmit(e) {
     e.preventDefault()
     var store = require('store')
-    store.set(emailRef.current.value, { restricted: true })
+    store.set(emailRef.current.value, { user: true })
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match")
     }

@@ -18,7 +18,7 @@ export default function Login() {
       setError("")
       setLoading(true)
       var store = require('store')
-      store.set(emailRef.current.value, { restricted: false })
+      store.set(emailRef.current.value, { user: false })
       await login(emailRef.current.value, passwordRef.current.value)
       
       history.push("/news/")

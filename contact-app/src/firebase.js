@@ -2,13 +2,15 @@ import firebase from "firebase/app"
 import "firebase/auth"
 
 const app= firebase.initializeApp({
-    apiKey: "AIzaSyAbBhzDX-bO4WiXzNo2YoVgwJk8XgF0nvw",
-    authDomain: "my-web-feed.firebaseapp.com",
-    projectId: "my-web-feed",
-    storageBucket: "my-web-feed.appspot.com",
-    messagingSenderId: "80623789",
-    appId: "1:80623789:web:da53e7c6fbffb7bb082e24",
-    measurementId: "G-PY7EKWMHCY"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    databaseURL: process.env.REACT_APP_BASEURL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID
+
 })
 
 export const auth=app.auth();
