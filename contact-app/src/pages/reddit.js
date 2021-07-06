@@ -3,8 +3,6 @@ import { Card,Container } from 'react-bootstrap';
 import { usePromiseTracker,trackPromise} from 'react-promise-tracker';
 import ReactLoading from 'react-loading'; 
 import { useAuth } from '../contexts/AuthContext';
-import { Helmet } from 'react-helmet';
-const TITLE= "Reddit | My Web Feed"
 const Reddit=()=>{
     const { promiseInProgress } = usePromiseTracker();
     const [reddit, setReddit]= useState([]) 
@@ -24,11 +22,13 @@ const Reddit=()=>{
         return text.replace(urlRegex, function(url) {
           return '<a href="' + url + '">' + url + '</a>';
         })
+        // or alternatively
+        // return text.replace(urlRegex, '<a href="$1">$1</a>')
       }
      try{ 
     return(
     <>
-    <Helmet><title>{TITLE}</title></Helmet>
+    
     <Container>
         <div style={{marginLeft:"50%"}}>
     {promiseInProgress && 

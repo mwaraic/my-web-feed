@@ -3,14 +3,12 @@ import Tweet2 from '../component/tweet2';
 import { usePromiseTracker,trackPromise} from 'react-promise-tracker';
 import ReactLoading from 'react-loading';
 import { useAuth } from '../contexts/AuthContext';
-import { Helmet } from 'react-helmet'
+// Tweet (without options)
 
-const TITLE= "Twitter | My Web Feed"
 const Tweets=()=>{
     const { promiseInProgress } = usePromiseTracker();
     const { currentUser} = useAuth()
     const [twitter, setTwitter]= useState([]) 
-
     useEffect(()=>{
         const fetchData= async()=>{
             const result = await fetch(`/api/tweets/${currentUser.email}`)  
@@ -20,11 +18,10 @@ const Tweets=()=>{
         trackPromise(
             fetchData());
     },[currentUser]);
+    console.log(twitter)
     
        return(
     <>
-    <Helmet><title>{TITLE}</title></Helmet>
-    
    <div style={{marginLeft:"50%"}}>
     {promiseInProgress && 
     <ReactLoading type={'spinningBubbles'} color={'black'} height={'50%'} width={'50%'} />}</div>
