@@ -2,7 +2,8 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-
+import { Helmet } from 'react-helmet';
+const TITLE= "Update Profile | My Web Feed"
 export default function UpdateProfile() {
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -43,6 +44,7 @@ export default function UpdateProfile() {
 
   return (
     <>
+    <Helmet><title>{TITLE}</title></Helmet>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Update Profile</h2>
