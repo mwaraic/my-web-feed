@@ -6,8 +6,7 @@ import { useState } from "react"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import Creatable from 'react-select/creatable';
-import { Helmet } from 'react-helmet';
-const TITLE= "Set Preferences | My Web Feed"
+
 const MyComponent=()=> {
     const { currentUser} = useAuth()
     const [twitter, setTwitter] = useState([])
@@ -42,7 +41,6 @@ const MyComponent=()=> {
     
       return (
         <>
-        <Helmet><title>{TITLE}</title></Helmet>
        <div style={{margin:20}}>{error && <Alert className="text-center" variant="danger">{error}</Alert>}</div>
         <Form onSubmit={onSubmit}>
         
