@@ -1,8 +1,6 @@
 import express from 'express';
 import {MongoClient} from 'mongodb';
-import path from 'path';
 const app= express();
-const needle = require('needle');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 let googleNewsAPI = require("google-news-json");
@@ -10,7 +8,6 @@ const reddit = require('scrap-reddit')
 const dotenv = require('dotenv');
 dotenv.config();
 
-app.use(express.static(path.join(__dirname,'/build')));
 const withDB = async (operations, res) => {
     try {
         const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
@@ -188,7 +185,5 @@ app.post('/api/set-preferances/:name', (req, res) => {
     }, res);
     
 });
-app.get('*', (req,res)=>{
-    res.sendFile(path.join(__dirname +'/build/index.html'))
-})
+
 app.listen(8000, () =>console.log('Listening on port 8000'));

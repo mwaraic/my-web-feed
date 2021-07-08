@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import {Col,Row,Navbar,Nav} from 'react-bootstrap';
+import {ListGroup, Navbar,Nav} from 'react-bootstrap';
 import { Alert } from "react-bootstrap"
 import { useAuth } from "./contexts/AuthContext";
 import { useHistory } from "react-router-dom"
@@ -36,11 +36,11 @@ export default function NavBar() {
   </Navbar.Collapse>
   </Navbar>
  
-  <Row>
-    <Col className="text-center" style={{minWidth: 10, backgroundColor :"black", color: "white"}}><a href="/news/"><img  style={{ height : 45, width: 40, }} src="https://www.tenforums.com/geek/gars/images/2/types/thumb_news_and_interests.png" alt=""/></a></Col>
-    <Col className="text-center"style={{ minWidth: 10,backgroundColor :"#00acee"}}><a href="/tweets/"><img  style={{ height : 40, width: 40, }} src="https://www.chalearning.ca/wp-content/uploads/2021/03/pnglot.com-twitter-bird-logo-png-139932.png" alt=""/></a></Col>
-    <Col className="text-center"style={{ minWidth: 10,backgroundColor :"#FF3F18", color: "white"}}><a href="/reddit/"><img  style={{ height : 40, width: 40, }} src="https://www.sportico.com/wp-content/uploads/2019/10/reddit-1.png" alt=""/></a></Col>
-  </Row>
+  <ListGroup horizontal>
+  <ListGroup.Item action href="/news/" className="rounded-0 md-4 text-center" style={{backgroundColor :"black"}} ><img  style={{ height : 35, width: 30, }} src="https://www.tenforums.com/geek/gars/images/2/types/thumb_news_and_interests.png" alt=""/></ListGroup.Item>
+  <ListGroup.Item action href="/tweets/"className="rounded-0 md-4 text-center" style={{ backgroundColor :"#00acee"}}><img  style={{ height : 30, width: 30, }} src="https://www.chalearning.ca/wp-content/uploads/2021/03/pnglot.com-twitter-bird-logo-png-139932.png" alt=""/></ListGroup.Item>
+  <ListGroup.Item action href="/reddit/"className="rounded-0 md-4 text-center"style={{ backgroundColor :"#FF3F18"}}><img  style={{ height : 30, width: 30, }} src="https://www.sportico.com/wp-content/uploads/2019/10/reddit-1.png" alt=""/></ListGroup.Item>
+  </ListGroup>
   {error && <Alert variant="danger">{error}</Alert>}
 </>)
 }
