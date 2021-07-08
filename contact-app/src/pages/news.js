@@ -4,6 +4,8 @@ import { usePromiseTracker,trackPromise} from 'react-promise-tracker';
 import ReactLoading from 'react-loading';
 import Gnews from '../component/gnews';
 import { useAuth } from "../contexts/AuthContext"
+import { Helmet } from 'react-helmet';
+const TITLE= "News | My Web Feed"
 const News=()=>{
     const { promiseInProgress } = usePromiseTracker();
     const { currentUser} = useAuth()
@@ -21,10 +23,9 @@ const News=()=>{
         
     },[currentUser]);
     
-    console.log(news)
   return(
     <>
-   
+   <Helmet><title>{TITLE}</title></Helmet>
     <Container> 
     <div style={{marginLeft:"50%"}}>
     {promiseInProgress && 
