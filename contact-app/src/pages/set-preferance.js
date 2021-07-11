@@ -23,7 +23,7 @@ const MyComponent=()=> {
       }
       var store = require('store')
       store.set(currentUser.email, { restricted: false })
-      await fetch(`/api/set-preferances/${currentUser.email}`, {
+      await fetch(`/api/set-preferances/${currentUser.uid}`, {
                 method: 'post',
                 body: JSON.stringify({ twitter: twitter, reddit: reddit, news: news }),
                 headers: {

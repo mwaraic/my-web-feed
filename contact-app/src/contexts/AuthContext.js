@@ -26,7 +26,9 @@ export function AuthProvider({ children }) {
   function resetPassword(email) {
     return auth.sendPasswordResetEmail(email)
   }
-
+  function emailVerify(email){
+    return auth.sendSignInLinkToEmail(email)
+  }
   function updateEmail(email) {
     return currentUser.updateEmail(email)
   }
@@ -51,7 +53,8 @@ export function AuthProvider({ children }) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    emailVerify
   }
 
   return (

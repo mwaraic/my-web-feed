@@ -8,14 +8,14 @@ export default function NavBar() {
   const {logout } = useAuth()
   const history = useHistory()
   const [error, setError] = useState("")
-
-
+  var store = require('store')
   async function handleLogout() {
     setError("")
 
     try {
       
       await logout()
+      store.clearAll()
       history.push("/login")
     } catch {
       setError("Failed to log out")

@@ -17,7 +17,7 @@ const UpdatePreferances=()=> {
     const [error, setError] = useState("")
     useEffect(()=>{
         const fetchData= async()=>{
-            const result = await fetch(`/api/preferances/${currentUser.email}`)  
+            const result = await fetch(`/api/preferances/${currentUser.uid}`)  
             const body= await result.json(); 
        
             setNews(body.news)
@@ -35,7 +35,7 @@ const UpdatePreferances=()=> {
       return setError("Error: Atleast one option need to be selected")
     }
         
-      await fetch(`/api/update-preferances/${currentUser.email}`, {
+      await fetch(`/api/update-preferances/${currentUser.uid}`, {
                 method: 'post',
                 body: JSON.stringify({ twitter: twitter, reddit: reddit, news: news }),
                 headers: {
@@ -77,7 +77,7 @@ const UpdatePreferances=()=> {
           classNamePrefix="select"
         />
      <div className="text-center" style={{margin:10}}> <img  style={{ height : "10rem", width: "20rem", }} src="https://logos-world.net/wp-content/uploads/2020/10/Reddit-Logo-2017-present.jpg" alt=""/></div> 
-     <Select
+     <Creatable
           value={reddit}
           isMulti
           onChange={handleChange3}

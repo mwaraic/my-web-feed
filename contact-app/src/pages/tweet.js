@@ -13,7 +13,7 @@ const Tweets=()=>{
 
     useEffect(()=>{
         const fetchData= async()=>{
-            const result = await fetch(`/api/tweets/${currentUser.email}`)  
+            const result = await fetch(`/api/tweets/${currentUser.uid}`)  
             const body= await result.json(); 
             setTwitter(body);  
         }

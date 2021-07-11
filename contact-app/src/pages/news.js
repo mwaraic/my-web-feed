@@ -13,7 +13,7 @@ const News=()=>{
    useEffect(()=>{
         
         const fetchData= async()=>{
-            const result = await fetch(`/api/news/${currentUser.email}`)  
+            const result = await fetch(`/api/news/${currentUser.uid}`)  
             const body= await result.json(); 
             setNews(body);  
         }
