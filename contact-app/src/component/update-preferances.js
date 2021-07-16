@@ -7,6 +7,7 @@ import {Link, useHistory } from "react-router-dom"
 import Creatable from 'react-select/creatable';
 import Select from 'react-select';
 import { Helmet } from 'react-helmet';
+import Reddi from '../pages/images/Reddit.jpg'
 const TITLE= "Update Preferences | My Web Feed"
 const UpdatePreferances=()=> {
     const { currentUser} = useAuth()
@@ -76,7 +77,7 @@ const UpdatePreferances=()=> {
           className="basic-multi-select"
           classNamePrefix="select"
         />
-     <div className="text-center" style={{margin:10}}> <img  style={{ height : "10rem", width: "20rem", }} src="https://logos-world.net/wp-content/uploads/2020/10/Reddit-Logo-2017-present.jpg" alt=""/></div> 
+     <div className="text-center" style={{margin:10}}> <img  style={{ height : "10rem", width: "20rem", }} src={Reddi} alt=""/></div> 
      <Creatable
           value={reddit}
           isMulti

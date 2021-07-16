@@ -4,6 +4,7 @@ import { usePromiseTracker,trackPromise} from 'react-promise-tracker';
 import ReactLoading from 'react-loading'; 
 import { useAuth } from '../contexts/AuthContext';
 import { Helmet } from 'react-helmet';
+import Reddi from './images/Reddit.jpg'
 const TITLE= "Reddit | My Web Feed"
 const Reddit=()=>{
     const { promiseInProgress } = usePromiseTracker();
@@ -38,7 +39,7 @@ const Reddit=()=>{
         
         <Card.Body><Card.Title>{d.subreddit_name_prefixed}</Card.Title>
        {/* eslint-disable-next-line */}
-          <div className="text-center"><img width="200" height="100" src={d.thumbnail} alt="" onError={(e) => (e.target.onerror = null, e.target.src = "https://logos-world.net/wp-content/uploads/2020/10/Reddit-Logo-2017-present.jpg")} />
+          <div className="text-center"><img width="200" height="100" src={d.thumbnail} alt="" onError={(e) => (e.target.onerror = null, e.target.src = Reddi)} />
           </div> <h4><a href={d.url}>{d.title}</a></h4> 
           <div dangerouslySetInnerHTML={{ __html: urlify(d.selftext)}} />
            

@@ -4,6 +4,7 @@ import { Alert } from "react-bootstrap"
 import { useAuth } from "./contexts/AuthContext";
 import { useHistory } from "react-router-dom"
 import { BsFillPersonFill,BsBoxArrowInLeft} from 'react-icons/bs';
+import Tw from './pages/images/tweet-logo.png'
 export default function NavBar() {
   const {logout } = useAuth()
   const history = useHistory()
@@ -38,7 +39,7 @@ export default function NavBar() {
  
   <ListGroup horizontal>
   <ListGroup.Item action href="/news/" className="rounded-0 md-4 text-center" style={{backgroundColor :"black"}} ><img  style={{ height : 35, width: 30, }} src="https://www.tenforums.com/geek/gars/images/2/types/thumb_news_and_interests.png" alt=""/></ListGroup.Item>
-  <ListGroup.Item action href="/tweets/"className="rounded-0 md-4 text-center" style={{ backgroundColor :"#00acee"}}><img  style={{ height : 30, width: 30, }} src="https://www.chalearning.ca/wp-content/uploads/2021/03/pnglot.com-twitter-bird-logo-png-139932.png" alt=""/></ListGroup.Item>
+  <ListGroup.Item action href="/tweets/"className="rounded-0 md-4 text-center" style={{ backgroundColor :"#00acee"}}><img  style={{ height : 30, width: 30, }} src={Tw} alt=""/></ListGroup.Item>
   <ListGroup.Item action href="/reddit/"className="rounded-0 md-4 text-center"style={{ backgroundColor :"#FF3F18"}}><img  style={{ height : 30, width: 30, }} src="https://www.sportico.com/wp-content/uploads/2019/10/reddit-1.png" alt=""/></ListGroup.Item>
   </ListGroup>
   {error && <Alert variant="danger">{error}</Alert>}

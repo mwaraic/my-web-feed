@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { Helmet } from 'react-helmet';
 const TITLE= "My Web Feed"
-export default function Login() {
+export default function Login({match}) {
   const emailRef = useRef()
   const passwordRef = useRef()
   const { login } = useAuth()
@@ -33,6 +33,7 @@ export default function Login() {
   return (
     <>
     <Helmet><title>{TITLE}</title></Helmet>
+    <h1>{match.params.id}</h1>
       <Card bg="success">
 
         <Card.Body>

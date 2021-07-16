@@ -13,6 +13,7 @@ export default function NavPrivateRoute({ component: Component, ...rest }) {
   if(store.get(currentUser.email).user ===true){
     return <Redirect to="/set-preferances/" />}
   }
+  
   return (
       <>
     <NavBar/>

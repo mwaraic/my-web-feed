@@ -14,6 +14,7 @@ import NavPrivateRoute2 from "./component/NavPrivateRoute2"
 import DivRoute from "./component/DivRoute"
 import MyComponent from "./pages/set-preferance"
 import UpdatePreferances from "./component/update-preferances"
+import Test from "./pages/Test"
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
           <AuthProvider>
             <Switch> 
               <NavPrivateRoute path="/" component={Dashboard} exact />
+              <DivRoute path="/:id" component={Test} exact/>
               <NavPrivateRoute path="/update-profile" component={UpdateProfile} exact/>
               <DivRoute path="/signup" component={Signup} exact/>
               <DivRoute path="/login" component={Login} exact />

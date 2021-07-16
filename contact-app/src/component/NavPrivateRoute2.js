@@ -8,9 +8,10 @@ import AppFooter from "../footer"
 export default function NavPrivateRoute2({ component: Component, ...rest }) {
   const { currentUser } = useAuth()
   var store = require('store')
-  
+  if(currentUser != null ){
   if(store.get(currentUser.email).user===false){
-    return <Redirect to="/news" />}
+    return <Redirect to="/news" />}}
+  
   return (
       <>
     <NavBar2/>
