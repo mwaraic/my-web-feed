@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom"
 import Creatable from 'react-select/creatable';
 import { Helmet } from 'react-helmet';
 import Reddi from './images/Reddit.jpg'
+import Logo from './images/logo-twitter.webp'
 const TITLE= "Set Preferences | My Web Feed"
 
 const SetPreferences=()=> {
@@ -59,7 +60,7 @@ const SetPreferences=()=> {
           className="basic-multi-select"
           classNamePrefix="select"
         />
-      <div className="text-center" style={{margin:10}}><img  style={{ height : "10rem", width: "20rem",  }} src="https://cdn.iphoneincanada.ca/wp-content/uploads/2016/02/twitter-logo.png" alt=""/></div>
+      <div className="text-center" style={{margin:10}}><img  style={{ height : "10rem", width: "20rem",  }} src={Logo} alt=""/></div>
       <Select
           defaultValue={twitter}
           isMulti
