@@ -1,4 +1,4 @@
-const Redditopt=[{'value': 'Home', 'label': 'Home'},
+const Reddit=[{'value': 'Home', 'label': 'Home'},
  {'value': 'AskReddit', 'label': 'AskReddit'},
  {'value': 'PublicFreakout', 'label': 'PublicFreakout'},
  {'value': 'pics', 'label': 'pics'},
@@ -32,7 +32,7 @@ const Redditopt=[{'value': 'Home', 'label': 'Home'},
  {'value': 'Tinder', 'label': 'Tinder'},
  {'value': 'askscience', 'label': 'askscience'},]
 
- const Newsopt=[{'value': 'US', 'label': 'US'}, {'value': 'Covid-19', 'label':'Covid-19'}, {'value': 'residentialschools', 'label':'Residential schools'}, {'value': 'Apple', 'label':'Apple'},{'value': 'Disney+', 'label': 'Disney+'}, {'value': 'UK', 'label': 'UK'},{'value': 'Pakistan', 'label': 'Pakistan'}, {'value': 'Olympics2020', 'label': 'Olympics2020'},{'value': 'NBA', 'label': 'NBA'}, {'value': 'ForestFires', 'label': 'ForestFires'} ]
+ const News=[{'value': 'US', 'label': 'US'}, {'value': 'Covid-19', 'label':'Covid-19'}, {'value': 'residentialschools', 'label':'Residential schools'}, {'value': 'Apple', 'label':'Apple'},{'value': 'Disney+', 'label': 'Disney+'}, {'value': 'UK', 'label': 'UK'},{'value': 'Pakistan', 'label': 'Pakistan'}, {'value': 'Olympics2020', 'label': 'Olympics2020'},{'value': 'NBA', 'label': 'NBA'}, {'value': 'ForestFires', 'label': 'ForestFires'} ]
 
 const Twitter=[
     {'value':389313566, label:'Dr Faheem Younus'},
@@ -47,5 +47,5 @@ const Twitter=[
     {'value':53914802, label: 'Ahmadiyya Muslims'}
 ]
 
- const Opt={"Reddit":Redditopt, "News":Newsopt, "Twitter": Twitter}
- export default Opt;
+ const Options={"Reddit":Reddit, "News":News, "Twitter": Twitter}
+ export default Options;
