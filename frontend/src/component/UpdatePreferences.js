@@ -8,6 +8,7 @@ import Creatable from 'react-select/creatable';
 import Select from 'react-select';
 import { Helmet } from 'react-helmet';
 import Reddi from '../pages/images/Reddit.jpg'
+import Logo from '../pages/images/logo-twitter.webp'
 const TITLE= "Update Preferences | My Web Feed"
 
 const UpdatePreferences=()=> {
@@ -69,7 +70,7 @@ const UpdatePreferences=()=> {
           className="basic-multi-select"
           classNamePrefix="select"
         />
-      <div className="text-center" style={{margin:10}}><img  style={{ height : "10rem", width: "20rem",  }} src="https://cdn.iphoneincanada.ca/wp-content/uploads/2016/02/twitter-logo.png" alt=""/></div>
+      <div className="text-center" style={{margin:10}}><img  style={{ height : "10rem", width: "20rem",  }} src={Logo} alt=""/></div>
       <Select
           value={twitter}
           isMulti
