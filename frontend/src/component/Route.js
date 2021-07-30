@@ -3,7 +3,9 @@ import { Route} from "react-router-dom"
 import { Container } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Redirect } from "react-router"
-export default function DivRoute({ component: Component, ...rest }) {
+
+export default function Router({ component: Component, ...rest }) {
+
 const {currentUser}=useAuth()
   return (
 <Container

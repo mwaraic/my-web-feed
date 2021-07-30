@@ -6,7 +6,8 @@ import NavBar from "../NavBar"
 import AppFooter from "../footer"
 
 
-export default function NavPrivateRoute({ component: Component, ...rest }) {
+export default function PrivateRoute1({ component: Component, ...rest }) {
+  
   const { currentUser } = useAuth()
   var store = require('store')
   if(currentUser != null ){

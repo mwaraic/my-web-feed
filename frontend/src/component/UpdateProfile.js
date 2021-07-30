@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { Helmet } from 'react-helmet';
 const TITLE= "Update Profile | My Web Feed"
+
 export default function UpdateProfile() {
   const emailRef = useRef()
   const passwordRef = useRef()

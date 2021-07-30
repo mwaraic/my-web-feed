@@ -5,7 +5,8 @@ import { Container } from "react-bootstrap"
 import NavBar2 from "../NavBar2"
 import AppFooter from "../footer"
 
-export default function NavPrivateRoute2({ component: Component, ...rest }) {
+export default function PrivateRoute2({ component: Component, ...rest }) {
+  
   const { currentUser } = useAuth()
   var store = require('store')
   if(currentUser != null ){

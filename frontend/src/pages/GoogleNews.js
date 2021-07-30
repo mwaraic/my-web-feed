@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {Container } from 'react-bootstrap';
 import { usePromiseTracker,trackPromise} from 'react-promise-tracker';
 import ReactLoading from 'react-loading';
-import Gnews from '../component/gnews';
+import News from '../component/News';
 import { useAuth } from "../contexts/AuthContext"
 import { Helmet } from 'react-helmet';
 const TITLE= "News | My Web Feed"
-const News=()=>{
+const GoogleNews=()=>{
     const { promiseInProgress } = usePromiseTracker();
     const { currentUser} = useAuth()
     const [news, setNews]= useState([]) 
@@ -30,10 +30,10 @@ const News=()=>{
     <div style={{marginLeft:"50%"}}>
     {promiseInProgress && 
     <ReactLoading type={'spinningBubbles'} color={'black'} height={'50%'} width={'50%'} />}</div>
-    <Gnews props={news}/>
+    <News props={news}/>
     
     </Container>
     </>)
 }
 
-export default News;
+export default GoogleNews;

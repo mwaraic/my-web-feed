@@ -11,7 +11,7 @@ function urlify(text) {
     // or alternatively
     // return text.replace(urlRegex, '<a href="$1">$1</a>')
   }
-const Tweet2=({props})=>{
+const Tweet=({props})=>{
   
 return(
    <Container>  
@@ -33,4 +33,4 @@ return(
     </Container>)
 }
 
-export default Tweet2;
+export default Tweet;

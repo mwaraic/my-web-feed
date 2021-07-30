@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import {Form, Button, Alert } from "react-bootstrap";
-import Opt from "../component/Options";
+import Opt from "./Options";
 import { useState } from "react"
 import { useAuth } from "../contexts/AuthContext"
 import {Link, useHistory } from "react-router-dom"
@@ -9,7 +9,8 @@ import Select from 'react-select';
 import { Helmet } from 'react-helmet';
 import Reddi from '../pages/images/Reddit.jpg'
 const TITLE= "Update Preferences | My Web Feed"
-const UpdatePreferances=()=> {
+
+const UpdatePreferences=()=> {
     const { currentUser} = useAuth()
     const [twitter, setTwitter] = useState([])
     const [news, setNews] = useState([])
@@ -101,4 +102,4 @@ const UpdatePreferances=()=> {
        
       );
     }
-  export default UpdatePreferances;
+  export default UpdatePreferences;

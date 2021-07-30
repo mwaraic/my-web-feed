@@ -9,7 +9,8 @@ import Creatable from 'react-select/creatable';
 import { Helmet } from 'react-helmet';
 import Reddi from './images/Reddit.jpg'
 const TITLE= "Set Preferences | My Web Feed"
-const MyComponent=()=> {
+
+const SetPreferences=()=> {
     const { currentUser} = useAuth()
     const [twitter, setTwitter] = useState([])
     const [news, setNews] = useState([])
@@ -85,4 +86,4 @@ const MyComponent=()=> {
        
       );
     }
-  export default MyComponent;
+  export default SetPreferences;

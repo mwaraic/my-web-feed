@@ -1,7 +1,8 @@
 import React from "react";
 import moment  from "moment";
 import { Card} from 'react-bootstrap';
-const Gnews =({props})=>{
+
+const News =({props})=>{
     try{return(
     props.sort(function(a, b) {
         var c = new Date(a.pubDate);
@@ -22,4 +23,4 @@ const Gnews =({props})=>{
         }
       
 
-export default Gnews;
+export default News;
