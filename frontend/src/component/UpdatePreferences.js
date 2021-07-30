@@ -9,6 +9,7 @@ import Select from 'react-select';
 import { Helmet } from 'react-helmet';
 import Reddi from '../pages/images/Reddit.jpg'
 import Logo from '../pages/images/logo-twitter.webp'
+import Google from '../pages/images/Google-News.png'
 const TITLE= "Update Preferences | My Web Feed"
 
 const UpdatePreferences=()=> {
@@ -61,7 +62,7 @@ const UpdatePreferences=()=> {
        
         <div className="text-center" style={{minWidth:"15rem", fontFamily: "Pacifico", marginTop: 50}}><h1 style={{fontSize: 40}}>Update your tags</h1></div>
         
-       <div className="text-center" style={{margin:10}}> <img  style={{ height : "15rem", width: "25rem", }} src="https://flipweb.org/wp-content/uploads/2019/09/Google-News.png" alt=""/></div> 
+       <div className="text-center" style={{margin:10}}> <img  style={{ height : "15rem", width: "25rem", }} src={Google} alt=""/></div> 
        <Creatable
           value={news}
           isMulti

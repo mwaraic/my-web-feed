@@ -9,6 +9,8 @@ import Creatable from 'react-select/creatable';
 import { Helmet } from 'react-helmet';
 import Reddi from './images/Reddit.jpg'
 import Logo from './images/logo-twitter.webp'
+import Google from './images/Google-News.png'
+
 const TITLE= "Set Preferences | My Web Feed"
 
 const SetPreferences=()=> {
@@ -51,7 +53,7 @@ const SetPreferences=()=> {
         
         <div style={{minWidth:"30rem", fontFamily: "Pacifico", marginTop: 50}}><h1 style={{fontSize: 40}}>Select your favourite tags</h1></div>
         
-       <div className="text-center" style={{margin:10}}> <img  style={{ height : "15rem", width: "25rem", }} src="https://flipweb.org/wp-content/uploads/2019/09/Google-News.png" alt=""/></div> 
+       <div className="text-center" style={{margin:10}}> <img  style={{ height : "15rem", width: "25rem", }} src={Google} alt=""/></div> 
        <Creatable
           defaultValue={news}
           isMulti
