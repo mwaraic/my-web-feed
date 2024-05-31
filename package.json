@@ -1,0 +1,35 @@
+{
+  "name": "contact-app-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon --exec npx babel-node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "google-news-json": "^2.0.4",
+    "google-news-scraper": "^1.0.6",
+    "got": "^11.8.2",
+    "lodash": "^4.17.21",
+    "mongodb": "^3.6.9",
+    "needle": "^2.6.0",
+    "newsapi": "^2.4.1",
+    "oauth-1.0a": "^2.2.6",
+    "react-twitter-embed": "^3.0.3",
+    "scrap-reddit": "^1.0.0",
+    "snoowrap": "^1.23.0",
+    "twitter-api-v2": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.5",
+    "@babel/node": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "nodemon": "^2.0.7"
+  }
+}
