@@ -1,40 +1,62 @@
-import React from "react"
-import Signup from "./component/Signup"
-import { AuthProvider } from "./contexts/AuthContext"
-import { BrowserRouter as Router, Switch} from "react-router-dom"
-import Dashboard from "./component/Dashboard"
-import Login from "./component/Login"
-import ForgotPassword from "./component/ForgotPassword"
-import UpdateProfile from "./component/UpdateProfile"
-import Twitter from "./pages/Twitter"
-import GoogleNews from "./pages/GoogleNews"
-import Reddit from "./pages/Reddit"
-import PrivateRoute1 from "./component/PrivateRoute1"
-import PrivateRoute2 from "./component/PrivateRoute2"
-import Route from "./component/Route"
-import SetPreferences from "./pages/SetPreferences"
-import UpdatePreferences from "./component/UpdatePreferences"
+import React, { Fragment } from "react";
+import Signup from "./component/signup/signup";
+import { AuthProvider } from "./firebase/authContext";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import Dashboard from "./component/dashboard/dashboard";
+import Login from "./component/login/login";
+import ForgotPassword from "./component/forgotPassword/forgotPassword";
+import UpdateProfile from "./component/updateProfile/updateProfile";
+import Twitter from "./pages/twitter/twitter";
+import GoogleNews from "./pages/googleNews/googleNews";
+import Reddit from "./pages/reddit/reddit";
+import PrivateRoute1 from "./component/privateRouteOne/privateRouteOne";
+import PrivateRoute2 from "./component/privateRouteTwo/privateRouteTwo";
+import PublicRoute from "./component/publicRoute/publicRoute";
+import SetPreferences from "./component/setPreferences/setPreferences";
+import UpdatePreferences from "./component/updatePreferences/updatePreferences";
+
 function App() {
   return (
-    <>
-        <Router>
-          <AuthProvider>
-            <Switch> 
-              <PrivateRoute1 path="/" component={Dashboard} exact />
-              <PrivateRoute1 path="/update-profile" component={UpdateProfile} exact/>
-              <Route path="/signup" component={Signup} exact/>
-              <Route path="/login" component={Login} exact />
-              <Route path="/forgot-password" component={ForgotPassword} exact />
-              <PrivateRoute1 path="/tweets/" component={Twitter} exact/>
-              <PrivateRoute1 path="/news/" component={GoogleNews} exact/>
-              <PrivateRoute1 path="/reddit/" component={Reddit} exact/>
-              <PrivateRoute2 path="/set-preferances/" component={SetPreferences} exact/>
-              <PrivateRoute1 path="/update-preferances/" component={UpdatePreferences} exact/>
-           </Switch>
+    <Router>
+      <Fragment>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<PrivateRoute1 />}>
+              <Route path="/" element={<Dashboard />} />
+            </Route>
+            <Route path="/update-profile" element={<PrivateRoute1 />}>
+              <Route path="/update-profile" element={<UpdateProfile />} />
+            </Route>
+            <Route path="/signup" element={<PublicRoute />}>
+              <Route path="/signup" element={<Signup />} />
+            </Route>
+            <Route path="/login" element={<PublicRoute />}>
+              <Route path="/login" element={<Login />} />
+            </Route>
+            <Route path="/forgot-password" element={<PublicRoute />}>
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+            </Route>
+            <Route path="/tweets" element={<PrivateRoute1 />}>
+              <Route path="/tweets" element={<Twitter />} />
+            </Route>
+            <Route path="/news" element={<PrivateRoute1 />}>
+              <Route path="/news" element={<GoogleNews />} />
+            </Route>
+            <Route path="/reddit" element={<PrivateRoute1 />}>
+              <Route path="/reddit" element={<Reddit />} />
+            </Route>
+            <Route path="/update" element={<PrivateRoute1 />}>
+              <Route path="/update" element={<UpdatePreferences />} />
+            </Route>
+            <Route path="/set" element={<PrivateRoute2 />}>
+              <Route path="/set" element={<SetPreferences />} />
+            </Route>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
         </AuthProvider>
-        
-        </Router>
-  </>
-  )
+      </Fragment>
+    </Router>
+  );
 }
-export default App
+
+export default App;
