@@ -1,6 +1,6 @@
 import express from 'express';
 import withDB from '../../client/mongodb/mongodb';
-import getUserTweets from '../../client/twitter.js/twitter';
+import getUserTweets from '../../client/twitter/twitter';
 const router = express.Router();
 
 // Get tweets from Twitter
