@@ -19,12 +19,11 @@ const UpdatePreferences = () => {
   const [reddit, setReddit] = useState([]);
   const history = useNavigate();
   const [error, setError] = useState("");
-  console.log('maaz')
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await fetch(`http://localhost:8000/api/preferences/${currentUser.uid}`);
       const body = await result.json();
-      console.log(body)
 
       setNews(body.news);
       setReddit(body.reddit);

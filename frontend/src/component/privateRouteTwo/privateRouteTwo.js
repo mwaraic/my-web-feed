@@ -14,7 +14,7 @@ export default function PrivateRoute2({ component: Component, ...rest }) {
     }
   }
 
-  return (
+  return currentUser ? (
     <>
       <NavBar2 />
 
@@ -26,16 +26,14 @@ export default function PrivateRoute2({ component: Component, ...rest }) {
           <Outlet
             {...rest}
             render={(props) => {
-              return currentUser ? (
-                <Component {...props} />
-              ) : (
-                <Navigate to="/login" />
-              );
+              <Component {...props} />
             }}
           ></Outlet>
         </div>
       </Container>
       <AppFooter />
     </>
+  ): (
+    <Navigate to="/login" />
   );
 }

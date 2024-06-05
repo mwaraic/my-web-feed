@@ -7,7 +7,7 @@ import { Navigate } from "react-router";
 export default function PublicRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
 
-  return (
+  return !currentUser ? (
     <Container
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
@@ -16,14 +16,10 @@ export default function PublicRoute({ component: Component, ...rest }) {
         <Outlet
           {...rest}
           render={(props) => {
-            return !currentUser ? (
-              <Component {...props} />
-            ) : (
-              <Navigate to="/" />
-            );
+            <Component {...props} />
           }}
         ></Outlet>
       </div>
     </Container>
-  );
+  ):(<Navigate to="/" />);
 }

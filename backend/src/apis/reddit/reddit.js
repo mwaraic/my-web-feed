@@ -1,14 +1,14 @@
-import express from 'express';
-import withDB from '../../client/mongodb/mongodb';
-const reddit = require('scrap-reddit');
+import express from "express";
+import withDB from "../../client/mongodb/mongodb";
+const reddit = require("scrap-reddit");
 const router = express.Router();
 
 // Get Reddit posts
-router.get('/api/reddit/:name', async (req, res) => {
+router.get("/api/reddit/:name", async (req, res) => {
   withDB(async (db) => {
     const currentUser = req.params.name;
     const preferences = await db
-      .collection('preferences')
+      .collection("preferences")
       .findOne({ name: currentUser });
     const tags = preferences.reddit;
     var collection = [];
@@ -25,4 +25,3 @@ router.get('/api/reddit/:name', async (req, res) => {
 });
 
 export default router;
-  

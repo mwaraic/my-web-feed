@@ -22,14 +22,12 @@ export default function Signup() {
       return setError("Passwords do not match");
     }
 
-    
+    try {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-    try {
       history("/");
     } catch {
-      console.log('maaz')
       setError("Failed to create an account");
     }
 

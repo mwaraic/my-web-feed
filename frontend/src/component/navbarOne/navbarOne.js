@@ -15,8 +15,8 @@ export default function NavBar() {
 
     try {
       await logout();
-      store.clearAll();
       history("/login");
+      store.clearAll();
     } catch {
       setError("Failed to log out");
     }
