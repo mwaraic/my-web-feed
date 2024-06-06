@@ -1,6 +1,6 @@
 # My Web Feed
 
-Welcome to **My Web Feed**! This platform offers a personalized feed experience by aggregating content from Google News, Reddit, and Twitter. Users can customize their preferences and keywords to tailor their feed according to their interests. Leveraging the MERN stack, this project ensures seamless integration and scalability.
+This platform offers a personalized feed experience by aggregating content from Google News, Reddit, and Twitter. Users can customize their preferences and keywords to tailor their feed according to their interests. Leveraging the MERN stack, this project ensures seamless integration and scalability.
 
 ## Description
 
