@@ -11,7 +11,7 @@ Welcome to **My Web Feed**! This platform offers a personalized feed experience 
 - Secure Authentication: Authenticate users securely to personalize their feed.
   ![Secure Authentication](./documentation/images/login.png)
 - Aggregated Content: Access content from Google News, Reddit, and Twitter in one place.
-  ![Aggregated Content](./documentation/images/news.png) ![Aggregated Content](./documentation/images/reddit.png)
+  ![Aggregated Content](./documentation/images/reddit.png)
 - Customized Feed: Set preferences and keywords to tailor the feed to your interests.
   ![Customized Feed](./documentation/images/preferences.png)
 
