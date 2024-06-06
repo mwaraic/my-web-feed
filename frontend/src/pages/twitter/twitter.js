@@ -13,9 +13,14 @@ const Twitter = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(`http://localhost:8000/api/tweets/${currentUser.uid}`);
-      const body = await result.json();
-      setTwitter(body);
+      currentUser.getIdToken(/* forceRefresh */ true).then(async (idToken) => {
+        const result = await fetch(`http://localhost:8000/api/tweets/${currentUser.uid}`, {headers: {
+          "Authorization": idToken,
+          "Content-Type": "application/json",
+        }});
+        const body = await result.json();
+        setTwitter(body);
+      })
     };
     trackPromise(fetchData());
   }, [currentUser]);

@@ -28,13 +28,15 @@ const SetPreferences = () => {
       }
       var store = require("store");
       store.set(currentUser.email, { restricted: false });
+      currentUser.getIdToken(/* forceRefresh */ true).then(async (idToken) => {
       await fetch(`http://localhost:8000/api/preferences/${currentUser.uid}`, {
         method: "post",
         body: JSON.stringify({ twitter: twitter, reddit: reddit, news: news }),
         headers: {
+          "Authorization": idToken,
           "Content-Type": "application/json",
         },
-      });
+      });})
       history("/news/");
     } catch {}
   }
