@@ -1,6 +1,6 @@
 # My Web Feed
 
-The platform brings together content from Google News, Reddit, and Twitter, to provide users with a customized feed. Users can set their preferences and keywords to filter the content according to their interests. The backend, built using Node.js and Express.js, handles data retrieval and processing, while MongoDB serves as the database for storing user preferences. Firebase is integrated into the project for user authentication management, ensuring secure access to personalized feeds. The frontend, developed with React.js, provides an intuitive interface for users to view and interact with their customized feed.
+The platform brings together content from Google News, Reddit, and Twitter, to provide users with a personalized feed. Users can set their preferences and keywords to filter the content according to their interests. The backend, built using Node.js and Express.js, handles data retrieval and processing, while MongoDB serves as the database for storing user preferences. Firebase is integrated into the project for user authentication management, ensuring secure access to personalized feeds. The frontend, developed with React.js, provides an intuitive interface for users to view and interact with their customized feed.
 
 ## Features
 
@@ -8,8 +8,8 @@ The platform brings together content from Google News, Reddit, and Twitter, to p
   ![Secure Authentication](./documentation/images/login.png)
 - Aggregated Content: Access content from Google News, Reddit, and Twitter in one place.
   ![Aggregated Content](./documentation/images/feed.png)
-- Customized Feed: Set preferences and keywords to tailor the feed to your interests.
-  ![Customized Feed](./documentation/images/preferences.png)
+- Personalized Feed: Set preferences and keywords to tailor the feed to your interests.
+  ![Personalized Feed](./documentation/images/preferences.png)
 
 ## Setup
 
