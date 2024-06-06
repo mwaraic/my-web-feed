@@ -11,7 +11,7 @@ This platform offers a personalized feed experience by aggregating content from 
 - Secure Authentication: Authenticate users securely to personalize their feed.
   ![Secure Authentication](./documentation/images/login.png)
 - Aggregated Content: Access content from Google News, Reddit, and Twitter in one place.
-  ![Aggregated Content](./documentation/images/reddit.png)
+  ![Aggregated Content](./documentation/images/feed.png)
 - Customized Feed: Set preferences and keywords to tailor the feed to your interests.
   ![Customized Feed](./documentation/images/preferences.png)
 
