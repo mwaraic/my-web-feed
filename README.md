@@ -1,10 +1,6 @@
 # My Web Feed
 
-This platform offers a personalized feed experience by aggregating content from Google News, Reddit, and Twitter. Users can customize their preferences and keywords to tailor their feed according to their interests. Leveraging the MERN stack, this project ensures seamless integration and scalability.
-
-## Description
-
-**My Web Feed** brings together content from various sources, including Google News, Reddit, and Twitter, to provide users with a customized feed. Users can set their preferences and keywords to filter the content according to their interests. The backend, built using Node.js and Express.js, handles data retrieval and processing, while MongoDB serves as the database for storing user preferences and feed data. The frontend, developed with React.js, provides an intuitive interface for users to view and interact with their personalized feed.
+The platform brings together content from Google News, Reddit, and Twitter, to provide users with a customized feed. Users can set their preferences and keywords to filter the content according to their interests. The backend, built using Node.js and Express.js, handles data retrieval and processing, while MongoDB serves as the database for storing user preferences. Firebase is integrated into the project for user authentication management, ensuring secure access to personalized feeds. The frontend, developed with React.js, provides an intuitive interface for users to view and interact with their customized feed.
 
 ## Features
 
