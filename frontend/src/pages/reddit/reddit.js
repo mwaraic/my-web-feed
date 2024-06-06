@@ -13,10 +13,15 @@ const Reddit = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(`http://localhost:8000/api/reddit/${currentUser.uid}`);
+      currentUser.getIdToken(/* forceRefresh */ true).then(async (idToken) => {
+      const result = await fetch(`http://localhost:8000/api/reddit/${currentUser.uid}`, {headers: {
+        "Authorization": idToken,
+        "Content-Type": "application/json",
+      }});
       const body = await result.json();
       setReddit(body);
-    };
+    });
+    }
     trackPromise(fetchData());
   }, [currentUser]);
   function urlify(text) {

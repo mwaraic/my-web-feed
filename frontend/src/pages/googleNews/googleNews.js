@@ -12,10 +12,14 @@ const GoogleNews = () => {
   const [news, setNews] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(`http://localhost:8000/api/news/${currentUser.uid}`);
+      currentUser.getIdToken(/* forceRefresh */ true).then(async (idToken) => {
+      const result = await fetch(`http://localhost:8000/api/news/${currentUser.uid}`, {headers: {
+        "Authorization": idToken,
+        "Content-Type": "application/json",
+      }});
       const body = await result.json();
       setNews(body);
-    };
+    })};
     trackPromise(fetchData());
   }, [currentUser]);
 

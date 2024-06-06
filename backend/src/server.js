@@ -8,6 +8,7 @@ import tweetsRouter from "./apis/tweets/tweets.js";
 import getPreferences from "./apis/preferences/get.js";
 import postPreferences from "./apis/preferences/post.js";
 import updatePreferences from "./apis/preferences/update.js";
+import authenticateFirebaseToken from "./client/firebase/firebase.js";
 dotenv.config();
 
 const app = express();
@@ -27,12 +28,12 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something broke!");
 });
 
-app.use(newsRouter);
-app.use(redditRouter);
-app.use(tweetsRouter);
-app.use(getPreferences);
-app.use(updatePreferences);
-app.use(postPreferences);
+app.use(authenticateFirebaseToken, newsRouter);
+app.use(authenticateFirebaseToken, redditRouter);
+app.use(authenticateFirebaseToken, tweetsRouter);
+app.use(authenticateFirebaseToken, getPreferences);
+app.use(authenticateFirebaseToken, updatePreferences);
+app.use(authenticateFirebaseToken, postPreferences);
 
 // Enable CORS for specific origin and methods
 const corsOptions = {

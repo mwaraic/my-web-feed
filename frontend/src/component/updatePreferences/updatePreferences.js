@@ -22,13 +22,17 @@ const UpdatePreferences = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch(`http://localhost:8000/api/preferences/${currentUser.uid}`);
+      currentUser.getIdToken(/* forceRefresh */ true).then(async (idToken) => {
+      const result = await fetch(`http://localhost:8000/api/preferences/${currentUser.uid}`, {headers: {
+        "Authorization": idToken,
+        "Content-Type": "application/json",
+      }});
       const body = await result.json();
 
       setNews(body.news);
       setReddit(body.reddit);
       setTwitter(body.twitter);
-    };
+    })}
 
     fetchData();
   }, [currentUser]);
@@ -38,14 +42,15 @@ const UpdatePreferences = () => {
     if (news.length === 0 || reddit.length === 0 || twitter.length === 0) {
       return setError("Error: Atleast one option need to be selected");
     }
-
+    currentUser.getIdToken(/* forceRefresh */ true).then(async (idToken) => {
     await fetch(`http://localhost:8000/api/preferences/${currentUser.uid}`, {
       method: "put",
       body: JSON.stringify({ twitter: twitter, reddit: reddit, news: news }),
       headers: {
+        "Authorization": idToken,
         "Content-Type": "application/json",
       },
-    });
+    })});
     history("/");
   }
 
