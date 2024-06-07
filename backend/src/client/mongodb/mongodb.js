@@ -1,5 +1,5 @@
 import { MongoClient } from "mongodb";
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/";
+const MONGO_URI = process.env.MONGO_URI || "mongodb://mongodb:27017/";
 
 // Database connection function
 const withDB = async (operations, res) => {

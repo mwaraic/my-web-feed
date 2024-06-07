@@ -22,7 +22,6 @@ const SetPreferences = () => {
   const [error, setError] = useState("");
   async function onSubmit(e) {
     e.preventDefault();
-    try {
       if (news.length === 0 || reddit.length === 0 || twitter.length === 0) {
         return setError("Error: Atleast one option need to be selected");
       }
@@ -36,9 +35,9 @@ const SetPreferences = () => {
           "Authorization": idToken,
           "Content-Type": "application/json",
         },
-      });})
+      });
       history("/news/");
-    } catch {}
+    })
   }
 
   const handleChange1 = (twitter) => setTwitter(twitter);

@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Card, Container } from "react-bootstrap";
-import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 import ReactLoading from "react-loading";
 import { useAuth } from "../../firebase/authContext";
 import { Helmet } from "react-helmet";
 import Reddi from "../../assets/images/Reddit.jpg";
 const TITLE = "Reddit | My Web Feed";
 const Reddit = () => {
-  const { promiseInProgress } = usePromiseTracker();
+  const [progress, setProgress] = useState(false);
   const [reddit, setReddit] = useState([]);
   const { currentUser } = useAuth();
 
   useEffect(() => {
-    const fetchData = async () => {
       currentUser.getIdToken(/* forceRefresh */ true).then(async (idToken) => {
       const result = await fetch(`http://localhost:8000/api/reddit/${currentUser.uid}`, {headers: {
         "Authorization": idToken,
@@ -20,9 +18,8 @@ const Reddit = () => {
       }});
       const body = await result.json();
       setReddit(body);
+      setProgress(true)
     });
-    }
-    trackPromise(fetchData());
   }, [currentUser]);
   function urlify(text) {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -37,17 +34,17 @@ const Reddit = () => {
           <title>{TITLE}</title>
         </Helmet>
         <Container>
+          {!progress ? (
           <div style={{ marginLeft: "50%" }}>
-            {promiseInProgress && (
               <ReactLoading
                 type={"spinningBubbles"}
                 color={"black"}
                 height={"50%"}
                 width={"50%"}
               />
-            )}
-          </div>
-          {reddit.map((d, key) => (
+          </div>)
+          : (
+          reddit.map((d, key) => (
             <Card key={key} style={{ minWidth: "20rem", margin: 10 }}>
               <Card.Body>
                 <Card.Title>{d.subreddit_name_prefixed}</Card.Title>
@@ -69,7 +66,7 @@ const Reddit = () => {
                 <div dangerouslySetInnerHTML={{ __html: urlify(d.selftext) }} />
               </Card.Body>
             </Card>
-          ))}
+          )))}
         </Container>
       </>
     );

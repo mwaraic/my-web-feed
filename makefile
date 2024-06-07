@@ -7,4 +7,4 @@ prettify:
 
 start:
 	cd frontend && docker-compose up -d
-	cd backend && npm install && npm start
+	cd backend && docker-compose up -d
