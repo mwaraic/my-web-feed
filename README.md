@@ -16,8 +16,6 @@ The platform brings together content from Google News, Reddit, and Twitter, to p
 Ensure you have the following installed on your system:
 
 - [Docker](https://www.docker.com/)
-- [Node.js](https://nodejs.org/)
-- [MongoDB](https://www.mongodb.com/)
 
 ### Installation
 
